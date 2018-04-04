@@ -1,9 +1,12 @@
+import os
 import re
 import boto3
 import requests
 import logging
 from botocore.exceptions import ClientError
 from cfn_resource_provider import ResourceProvider
+
+logging.basicConfig(level=os.getenv('LOG_LEVEL', 'INFO'))
 
 #
 # The request schema defining the Resource Properties
