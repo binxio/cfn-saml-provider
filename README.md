@@ -21,9 +21,9 @@ or with the metadata itself:
     Properties:
       Name: auth0
       Metadata: |
-	<EntityDescriptor entityID="urn:binxio.auth0.com" xmlns="urn:oasis:names:tc:SAML:2.0:metadata">
-		....
-	</EntityDescriptor>
+        <EntityDescriptor entityID="urn:binxio.auth0.com" xmlns="urn:oasis:names:tc:SAML:2.0:metadata">
+                ....
+        </EntityDescriptor>
       ServiceToken: !Sub 'arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:cfn-saml-provider'
 ```
 
@@ -48,7 +48,7 @@ To install the simple sample of the SAML provider, type:
 
 ```sh
 aws cloudformation create-stack --stack-name cfn-saml-provider-demo \
-	--template-body file://cloudformation/demo-stack.json
+        --template-body file://cloudformation/demo-stack.json
 aws cloudformation wait stack-create-complete  --stack-name cfn-saml-provider-demo
 ```
 
