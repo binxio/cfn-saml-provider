@@ -1,0 +1,17 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Demo SAML Custom Provider
+
+Resources:
+  SAMLProvider:
+    Type: Custom::SAMLProvider
+    Properties:
+      ServiceToken: !Sub 'arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:cfn-saml-provider'
+      Name: !Sub 'saml-provider-${AWS::StackName}'
+      URL: https://mvanholsteijn.eu.auth0.com/samlp/metadata/SLeL10SEptRHmDPNXtKLXyHwZSGlrMZU
+
+
+Outputs:
+  SAMLProvider:
+    Description: Arn of the SAML provider
+    Value: !Ref 'SAMLProvider'
