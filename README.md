@@ -2,7 +2,8 @@
 A CloudFormation custom resource provider for adding a SAML identity provider.  
 
 ## Syntax
-To create a SAML provider using your AWS CloudFormation template, use [Custom::SAMLProvider](docs/saml-provider.md):
+To create a SAML provider using your AWS CloudFormation template, use a [Custom::SAMLProvider](docs/saml-provider.md) resource with reference
+to the metadata URL:
 
 ```yaml
   SAMLProvider:
@@ -10,6 +11,19 @@ To create a SAML provider using your AWS CloudFormation template, use [Custom::S
     Properties:
       Name: auth0
       URL: https://auth0.com/mytenant/providerurl
+      ServiceToken: !Sub 'arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:cfn-saml-provider'
+```
+or with the metadata itself:
+
+```yaml
+  SAMLProvider:
+    Type: Custom::SAMLProvider
+    Properties:
+      Name: auth0
+      Metadata: |
+	<EntityDescriptor entityID="urn:binxio.auth0.com" xmlns="urn:oasis:names:tc:SAML:2.0:metadata">
+		....
+	</EntityDescriptor>
       ServiceToken: !Sub 'arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:cfn-saml-provider'
 ```
 
