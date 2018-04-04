@@ -1,6 +1,6 @@
 include Makefile.mk
 
-NAME=cfn-auth0-provider
+NAME=cfn-saml-provider
 S3_BUCKET_PREFIX=binxio-public
 AWS_REGION=$(shell echo 'import boto3; print boto3.session.Session().region_name' | python)
 ALL_REGIONS=$(shell printf "import boto3\nprint '\\\n'.join(map(lambda r: r['RegionName'], boto3.client('ec2').describe_regions()['Regions']))\n" | python | grep -v '^$(AWS_REGION)$$')
