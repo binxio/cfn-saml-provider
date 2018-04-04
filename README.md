@@ -35,11 +35,26 @@ To deploy the provider, type:
 ```sh
 aws cloudformation create-stack \
         --capabilities CAPABILITY_IAM \
-        --stack-name cfn-samle-provider \
+        --stack-name cfn-saml-provider \
         --template-body file://cloudformation/cfn-saml-provider.json
 
 aws cloudformation wait stack-create-complete  --stack-name cfn-saml-provider
 ```
 
 This CloudFormation template will use our pre-packaged provider from `s3://binxio-public-${AWS_REGION}/lambdas/cfn-saml-provider-0.1.3.zip`.
+
+## Demo
+To install the simple sample of the SAML provider, type:
+
+```sh
+aws cloudformation create-stack --stack-name cfn-saml-provider-demo \
+	--template-body file://cloudformation/demo-stack.json
+aws cloudformation wait stack-create-complete  --stack-name cfn-saml-provider-demo
+```
+
+to validate the result, type:
+
+```sh
+aws iam list-saml-providers
+```
 
