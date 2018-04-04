@@ -21,7 +21,7 @@ Resources:
         S3Bucket: !Sub '${S3BucketPrefix}-${AWS::Region}'
         S3Key: !Ref 'CFNCustomProviderZipFileName'
       FunctionName: cfn-saml-provider
-      Handler: provider.handler
+      Handler: saml_provider.handler
       MemorySize: 128
       Timeout: 10
       Role: !GetAtt 'LambdaRole.Arn'
@@ -37,9 +37,9 @@ Resources:
         Statement:
           - Effect: Allow
             Action:
-              - iam:CreateSamlProvider
-              - iam:UpdateSamlProvider
-              - iam:DeleteSamlProvider
+              - iam:CreateSAMLProvider
+              - iam:UpdateSAMLProvider
+              - iam:DeleteSAMLProvider
             Resource: '*'
       Roles:
         - !Ref 'LambdaRole'
