@@ -1,0 +1,6 @@
+target/
+db.sqllite3
+mysql-data/
+.git/
+staticfiles/
+venv/
