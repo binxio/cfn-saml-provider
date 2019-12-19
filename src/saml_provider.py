@@ -100,7 +100,7 @@ class SAMLProvider(ResourceProvider, object):
             self.fail('{}'.format(e))
 
     def delete(self):
-        if re.match(r'arn:aws:iam::[0-9]*:saml-provider/.*$', self.physical_resource_id):
+        if re.match(r'arn:aws[-a-z]*:iam::[0-9]*:saml-provider/.*$', self.physical_resource_id):
             response = self.iam.delete_saml_provider(SAMLProviderArn=self.physical_resource_id)
 
 

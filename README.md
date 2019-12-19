@@ -11,7 +11,7 @@ to the metadata URL:
     Properties:
       Name: auth0
       URL: https://auth0.com/mytenant/providerurl
-      ServiceToken: !Sub 'arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:cfn-saml-provider'
+      ServiceToken: !Sub 'arn:${AWS::Partition}:lambda:${AWS::Region}:${AWS::AccountId}:function:cfn-saml-provider'
 ```
 or with the metadata itself:
 
@@ -24,7 +24,7 @@ or with the metadata itself:
         <EntityDescriptor entityID="urn:binxio.auth0.com" xmlns="urn:oasis:names:tc:SAML:2.0:metadata">
                 ....
         </EntityDescriptor>
-      ServiceToken: !Sub 'arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:cfn-saml-provider'
+      ServiceToken: !Sub 'arn:${AWS::Partition}:lambda:${AWS::Region}:${AWS::AccountId}:function:cfn-saml-provider'
 ```
 
 On completion, it will return the ARN of the SAML Provider.

@@ -10,7 +10,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
     Name: String
     Metadata: String
     URL: url
-    ServiceToken" : !Sub 'arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:cfn-saml-provider'
+    ServiceToken" : !Sub 'arn:${AWS::Partition}:lambda:${AWS::Region}:${AWS::AccountId}:function:cfn-saml-provider'
 ```
 
 It will create a SAML provider named `Name` using the `Metadata` literal or the content
