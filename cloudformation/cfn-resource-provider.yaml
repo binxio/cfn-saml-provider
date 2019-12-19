@@ -9,7 +9,7 @@ Parameters:
     Default: ''
   CFNCustomProviderZipFileName:
     Type: String
-    Default: lambdas/cfn-saml-provider-0.1.3.zip
+    Default: lambdas/cfn-saml-provider-0.1.4.zip
 Resources:
   CFNCustomProvider:
     Type: AWS::Lambda::Function
