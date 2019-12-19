@@ -3,15 +3,12 @@ RUN apt-get update && apt-get install -y zip
 WORKDIR /lambda
 
 ADD requirements.txt /tmp
-RUN pip install --quiet -t /lambda -r /tmp/requirements.txt && \
-    find /lambda -type d | xargs chmod ugo+rx && \
-    find /lambda -type f | xargs chmod ugo+r
-
+RUN pip install --quiet -t /lambda -r /tmp/requirements.txt
 ADD src/ /lambda/
-RUN find /lambda -type d | xargs chmod ugo+rx && \
-    find /lambda -type f | xargs chmod ugo+r
-
 RUN python -m compileall -q /lambda
+RUN find /lambda -print0 -type d | xargs -0 chmod ugo+rx && \
+    find /lambda -print0 -type f | xargs -0 chmod ugo+r
+
 ARG ZIPFILE=lambda.zip
 RUN zip --quiet -9r /${ZIPFILE}  .
 
