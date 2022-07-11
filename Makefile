@@ -71,7 +71,7 @@ target/$(NAME)-$(VERSION).zip: src/*.py requirements.txt
 		chmod ugo+r target/$(NAME)-$(VERSION).zip
 
 venv: requirements.txt
-	virtualenv -p python3 venv  && \
+	virtualenv -p python3.9 venv  && \
 	. ./venv/bin/activate && \
 	pip3 --quiet install --upgrade pip && \
 	pip3 --quiet install -r requirements.txt 
@@ -116,3 +116,10 @@ delete-demo:
 	aws cloudformation delete-stack --stack-name $(NAME)-demo 
 	aws cloudformation wait stack-delete-complete  --stack-name $(NAME)-demo
 
+deploy-pipeline:
+	aws cloudformation deploy \
+                --capabilities CAPABILITY_IAM \
+                --stack-name $(NAME)-pipeline \
+                --template-file ./cloudformation/cicd-pipeline.yaml \
+                --parameter-overrides \
+                        S3BucketPrefix=$(S3_BUCKET_PREFIX)
