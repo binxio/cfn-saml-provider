@@ -41,7 +41,7 @@ aws cloudformation create-stack \
 aws cloudformation wait stack-create-complete  --stack-name cfn-saml-provider
 ```
 
-This CloudFormation template will use our pre-packaged provider from `s3://binxio-public-${AWS_REGION}/lambdas/cfn-saml-provider-0.1.4.zip`.
+This CloudFormation template will use our pre-packaged provider from `s3://binxio-public-${AWS_REGION}/lambdas/cfn-saml-provider-1.0.0.zip`.
 
 ## Demo
 To install the simple sample of the SAML provider, type:
