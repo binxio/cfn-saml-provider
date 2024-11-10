@@ -8,7 +8,7 @@ Resources:
     Properties:
       ServiceToken: !Sub 'arn:${AWS::Partition}:lambda:${AWS::Region}:${AWS::AccountId}:function:cfn-saml-provider'
       Name: !Sub 'saml-provider-${AWS::StackName}'
-      URL: 'https://mvanholsteijn.eu.auth0.com/samlp/metadata/SLeL10SEptRHmDPNXtKLXyHwZSGlrMZU'
+      URL: 'https://mvanholsteijn.eu.auth0.com/samlp/metadata/ZALyvKmxYYlTmfHW4m4lzkia60S1YsSf'
 
 
 Outputs:

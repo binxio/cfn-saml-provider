@@ -17,15 +17,13 @@ Resources:
       - LambdaRole
     Properties:
       Description: Custom SAML Provider CloudFormation Provider
+      PackageType: Image
       Code:
-        S3Bucket: !Sub '${S3BucketPrefix}-${AWS::Region}'
-        S3Key: !Ref 'CFNCustomProviderZipFileName'
+        ImageUri: 463637877380.dkr.ecr.eu-central-1.amazonaws.com/xebia/cfn-saml-provider:1.0.0-db52506-dirty
       FunctionName: cfn-saml-provider
-      Handler: saml_provider.handler
       MemorySize: 128
       Timeout: 10
       Role: !GetAtt 'LambdaRole.Arn'
-      Runtime: python3.9
   LambdaPolicy:
     Type: AWS::IAM::Policy
     DependsOn:
